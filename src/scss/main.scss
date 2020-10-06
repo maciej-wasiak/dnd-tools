@@ -6,8 +6,41 @@
 body {
   background: $wtf;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
+}
+
+header {
+  display: flex;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+
+  padding: 0 1rem;
+
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 240px;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px dotted hotpink;
+  border-radius: 4px;
+  background: #ffffff08;
+
+  &__tall {
+    grid-row: span 2 / auto;
+  }
+
+  &__wide {
+    grid-column: span 2 / auto;
+  }
 }
