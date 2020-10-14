@@ -3,6 +3,9 @@
 @import "_variables";
 @import "modules/hello.scss";
 
+//cards
+@import "modules/settings.scss";
+
 body {
   background: $wtf;
   color: #fff;
@@ -11,6 +14,8 @@ body {
 
 header {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 main {
@@ -37,10 +42,14 @@ main {
   background: #ffffff08;
 
   &__tall {
-    grid-row: span 2 / auto;
+    @media screen and (min-width: 600px) {
+      grid-row: span 2 / auto;
+    }
   }
 
   &__wide {
-    grid-column: span 2 / auto;
+    @media screen and (min-width: 600px) {
+      grid-column: span 2 / auto;
+    }
   }
 }
