@@ -42,11 +42,32 @@ function toggle_card(card_name) {
 
     if (toggle.checked == true) {
         card.style.display = 'flex';
+        localStorage.setItem(card_name + '_checked', 1);
     } else {
         card.style.display = 'none';
+        localStorage.setItem(card_name + '_checked', 0);
     }
 }
 
-document.querySelector(".settings-toggle").addEventListener("click", function () {toggle_card('settings')});
+const cards = ['settings', 'dices'];
 
-document.querySelector(".dices-toggle").addEventListener("click", function () {toggle_card('dices')});
+for(let i in cards) {
+    i = cards[i];
+
+    console.log(i);
+
+    if (localStorage.getItem(i + '_checked') === null) {
+        console.log(i);
+        localStorage.setItem(i + '_checked', 1);
+    }
+
+    if (localStorage.getItem(i + '_checked') == true) {
+        document.querySelector('#' + i + '-toggle').checked = true;
+    } else {
+        document.querySelector('#' + i + '-toggle').checked = false;
+    }
+
+    toggle_card(i);
+
+    document.querySelector('.' + i + '-toggle').addEventListener('click', () => toggle_card(i)); 
+}
