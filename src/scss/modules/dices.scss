@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+.dices-card {
+    
+    & div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 0 15px;
+        
+        & .dice-button {
+            padding: 8px 0;
+            width: 4rem;
+            margin: 5px;
+            
+            border: 0;
+            border-radius: 4px;
+            background-color: #fff2;
+            // font-family: 'Open Sans Condensed', sans-serif;
+            color: white
+        }
+    }
+
+    & .dice-resault {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        width: 50%;
+        height: 25%;
+
+        text-transform: uppercase;
+        background-color: #fff2;
+        border-radius: 4px;
+    }
+}

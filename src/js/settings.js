@@ -49,15 +49,15 @@ function toggle_card(card_name) {
     }
 }
 
-const cards = ['settings', 'dices'];
+const cards = ['settings', 'dices']; //list of all cards
 
-for(let i in cards) {
+for (let i in cards) {
     i = cards[i];
 
-    console.log(i);
+    // console.log(i);
 
     if (localStorage.getItem(i + '_checked') === null) {
-        console.log(i);
+        // console.log(i);
         localStorage.setItem(i + '_checked', 1);
     }
 
