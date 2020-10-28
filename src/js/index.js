@@ -7,7 +7,7 @@ import '../scss/main.scss';
 /* place your code below */
 
 // SETTINGS
-const cardsList = ['settings', 'dices'];
+const cardsList = ['settings', 'dices', 'advanced-dices'];
 
 function toggle_card(card_name) {
     let card = document.querySelector('.' + card_name + '-card');
@@ -46,7 +46,6 @@ for (let i in cardsList) {
     }
 
     toggle_card(i);
-    // document.querySelector('.' + i + '-toggle').addEventListener('click', () => toggle_card(i)); 
 }
 
 // DICES
@@ -65,14 +64,36 @@ for (let i in dicesList) {
     <button class='dice-button d${i}'>D${i}</button>`;
 
     console.log(`.d${i}`);
-    // document.querySelector('.d'+i).addEventListener('click', () => roll_dice(i));
 }
 
+// ADVANCED DICES
+function advanced_roll_dice() {
+    let adc = parseFloat(document.querySelector('#advanced-dice-count').value);
+    if (isNaN(adc)) {
+        adc = 1;
+    }
+    let ads = parseFloat(document.querySelector('#advanced-dice-size').value);
+    if (isNaN(ads)) {
+        ads = 20;
+    }
+    let ada = parseFloat(document.querySelector('#advanced-dice-addend').value);
+    if (isNaN(ada)) {
+        ada = 0;
+    }
+    let resault = 0;
+    for (let i = 0; i < adc; i++) {
+        resault += Math.ceil(Math.random() * ads);
+        console.log(resault);
+    }
+    resault += ada;
+    document.querySelector('.advanced-dice-resault').innerHTML = resault;
+}
 
 // BUTTONS - ADD EVENT LISTENER
 const buttons = {};
 buttons['.settings-toggle'] = () => toggle_card('settings');
 buttons['.dices-toggle'] = () => toggle_card('dices');
+buttons['.advanced-dices-toggle'] = () => toggle_card('advanced-dices');
 buttons['.d2'] = () => roll_dice(2);
 buttons['.d4'] = () => roll_dice(4);
 buttons['.d6'] = () => roll_dice(6);
@@ -81,6 +102,7 @@ buttons['.d10'] = () => roll_dice(10);
 buttons['.d12'] = () => roll_dice(12);
 buttons['.d20'] = () => roll_dice(20);
 buttons['.d100'] = () => roll_dice(100);
+buttons['.advanced-dice-roll-button'] = advanced_roll_dice;
 
 for (const [key, value] of Object.entries(buttons)) {
     // console.log(key, value);
